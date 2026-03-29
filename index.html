@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADN Salsa Oficial | Siente el Ritmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">ADN SALSA</div>
+                <ul class="nav-links" style="display: flex; list-style: none; gap: 20px;">
+                    <li><a href="#about" style="color: var(--primary); text-decoration: none; font-weight: 700;">QUIÉNES SOMOS</a></li>
+                    <li><a href="#benefits" style="color: var(--primary); text-decoration: none; font-weight: 700;">BENEFICIOS</a></li>
+                    <li><a href="#events" style="color: var(--primary); text-decoration: none; font-weight: 700;">EVENTOS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ADN SALSA</h1>
+            <p>La comunidad de salsa más vibrante. Aprende, conecta y vive la pasión del baile tropical con los mejores instructores.</p>
+            <a href="#form" class="btn btn-primary">ÚNETE AHORA</a>
+        </div>
+    </section>
+
+    <!-- 1. Quienes Somos -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="reveal">
+                    <h2>¿Quiénes Somos?</h2>
+                    <p style="font-size: 1.1rem; margin-top: 20px; color: #555;">
+                        Somos **ADN Salsa**, una academia dedicada a preservar y difundir la cultura de la salsa. No solo enseñamos pasos, transmitimos una herencia de alegría y ritmo que conecta a personas de todas las edades.
+                    </p>
+                    <p style="margin-top: 20px; color: #555;">
+                        Con más de 10 años de experiencia, hemos formado a miles de bailarines que hoy brillan en las pistas de todo el mundo. Nuestro ADN es pura energía tropical.
+                    </p>
+                </div>
+                <div class="reveal" style="background: url('images/event2.png'); background-size: cover; height: 350px; border-radius: 20px; box-shadow: var(--shadow);"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Formulario y Beneficios -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Beneficios de unirte</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Aprendizaje Rápido</h3>
+                    <p>Metodologías modernas para que bailes desde la primera clase.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidad Global</h3>
+                    <p>Conecta con personas apasionadas por el baile y la cultura.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <i class="fas fa-award"></i>
+                    <h3>Certificación</h3>
+                    <p>Valida tus conocimientos con nuestros niveles oficiales.</p>
+                </div>
+            </div>
+
+            <div id="form" class="form-wrapper reveal">
+                <h2 style="text-align: center; margin-bottom: 30px;">¡Comienza tu viaje!</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" placeholder="Tu nombre..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">¿Por qué quieres aprender salsa?</label>
+                        <textarea id="message" rows="4" placeholder="Cuéntanos un poco..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">ENVIAR REGISTRO</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Carousel Eventos con Imagenes Fijas con Links a YT -->
+    <section id="events" class="events-section" style="background: var(--white);">
+        <div class="container">
+            <h2 style="margin-bottom: 40px;">Próximos Eventos</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="track1">
+                    <div class="carousel-slide">
+                        <div class="event-card" style="background-image: url('images/event1.png');">
+                            <div class="event-info">
+                                <h3>Salsa Night Fever</h3>
+                                <p>Sábado 15 de Abril</p>
+                                <a href="https://youtube.com" target="_blank" class="yt-link"><i class="fab fa-youtube"></i> Ver en YT</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="event-card" style="background-image: url('images/event3.png');">
+                            <div class="event-info">
+                                <h3>Festival de Verano</h3>
+                                <p>Mayo 2026</p>
+                                <a href="https://youtube.com" target="_blank" class="yt-link"><i class="fab fa-youtube"></i> Ver en YT</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="event-card" style="background-image: url('images/event4.png');">
+                            <div class="event-info">
+                                <h3>Gala de Aniversario</h3>
+                                <p>Diciembre 2026</p>
+                                <a href="https://youtube.com" target="_blank" class="yt-link"><i class="fab fa-youtube"></i> Ver en YT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Carousel Eventos Recomendados -->
+    <section class="events-section" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 style="margin-bottom: 40px;">Recomendados para ti</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="track2">
+                    <div class="carousel-slide">
+                        <div class="event-card" style="background-image: url('images/hero_bg.png');">
+                            <div class="event-info">
+                                <h3>Clase Maestra: Estilo</h3>
+                                <p>Instructor Jefe</p>
+                                <span style="background: var(--secondary); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">Top Recomendado</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="event-card" style="background-image: url('images/event2.png');">
+                            <div class="event-info">
+                                <h3>Workshop Parejas</h3>
+                                <p>Nivel Intermedio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="event-card" style="background-image: url('images/event1.png');">
+                            <div class="event-info">
+                                <h3>Salsa en la Playa</h3>
+                                <p>Música en Vivo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Links para YT, TK, Instagram -->
+    <section class="social-section">
+        <div class="container">
+            <h2>Síguenos en nuestras redes</h2>
+            <div class="social-links">
+                <a href="https://youtube.com" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="https://tiktok.com" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+                <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ADN Salsa Oficial. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
