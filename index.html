@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>ADN Salsa Oficial | Siente el Ritmo</title>
+    <link rel="icon" type="image/png" href="images/ADNsalsa_logo.PNG">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,11 +14,16 @@
     <header id="header">
         <div class="container">
             <nav>
-                <div class="logo">ADN SALSA</div>
+                <div class="logo">
+                    <img src="images/ADNsalsa_logo.PNG" alt="ADN Salsa Logo" class="logo-img">
+                    ADN SALSA
+                </div>
                 <ul class="nav-links" style="display: flex; list-style: none; gap: 30px;">
-                    <li><a href="#about" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">QUIÉNES SOMOS</a></li>
-                    <li><a href="#benefits" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">BENEFICIOS</a></li>
+                    <li><a href="#about" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">NOSOTROS</a></li>
+                    <li><a href="#emisora" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">EMISORA</a></li>
+                    <li><a href="#youtube" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">CANAL YT</a></li>
                     <li><a href="#events" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">EVENTOS</a></li>
+                    <li><a href="#patrocinadores" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">PARTNERS</a></li>
                 </ul>
             </nav>
         </div>
@@ -48,9 +54,45 @@
                         Con más de 10 años de experiencia, hemos formado a miles de bailarines que hoy brillan en las pistas de todo el mundo. Nuestro ADN es pura energía tropical destilada en elegancia y técnica.
                     </p>
                 </div>
-                <div class="reveal video-wrapper">
-                    <div id="about-player"></div>
-                </div>
+                <div class="reveal" style="background: url('images/event2.png'); background-size: cover; height: 450px; border: 1px solid var(--primary);"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [NEW] Nuestra Emisora -->
+    <section id="emisora" class="emisora-section">
+        <div class="title-strip">
+            <div class="container">
+                <h2>Nuestra Emisora</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="media-card reveal">
+                <i class="fas fa-tower-broadcast" style="font-size: 4rem; color: var(--primary); margin-bottom: 30px; display: block;"></i>
+                <h3>ADN SALSA RADIO</h3>
+                <p>Sintoniza el mejor ritmo tropical las 24 horas del día. Vive la experiencia ADN Salsa desde cualquier lugar.</p>
+                <a href="https://tunein.com/radio/ADN-SALSA-RADIO-s354577/" target="_blank" class="btn btn-primary" style="margin-top: 30px;">
+                    ESCUCHAR EN TUNEIN <i class="fas fa-play" style="margin-left: 10px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- [NEW] Nuestro Canal Youtube -->
+    <section id="youtube" class="youtube-section">
+        <div class="title-strip">
+            <div class="container">
+                <h2>Nuestro Canal YouTube</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="media-card reveal" style="background: var(--dark); color: var(--white); border-color: var(--primary);">
+                <i class="fab fa-youtube" style="font-size: 4rem; color: #FF0000; margin-bottom: 30px; display: block;"></i>
+                <h3 style="color: var(--primary);">ADN SALSA OFICIAL</h3>
+                <p>Tutoriales, presentaciones en vivo y contenido exclusivo de nuestra comunidad.</p>
+                <a href="https://www.youtube.com/" target="_blank" class="btn btn-primary" style="margin-top: 30px;">
+                    SUSCRÍBETE AHORA <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -83,21 +125,14 @@
 
             <div id="form" class="form-wrapper reveal">
                 <h2 style="text-align: center; margin-bottom: 30px;">¡Comienza tu viaje!</h2>
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Nombre Completo</label>
-                        <input type="text" id="name" placeholder="Tu nombre..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="tu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">¿Por qué quieres aprender salsa?</label>
-                        <textarea id="message" rows="4" placeholder="Cuéntanos un poco..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">ENVIAR REGISTRO</button>
-                </form>
+                <p style="text-align: center; margin-bottom: 30px; color: #CCC; font-weight: 300;">
+                    Únete a nuestra academia completando el formulario oficial de registro. Haz clic en el botón de abajo para comenzar.
+                </p>
+                <div style="text-align: center;">
+                    <a href="https://forms.gle/6VKaLZiStNM4Mdg49" target="_blank" class="btn btn-primary" style="width: 100%; display: block; padding: 20px;">
+                        ABRIR FORMULARIO DE INSCRIPCIÓN <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -184,14 +219,41 @@
         </div>
     </section>
 
+    <!-- [NEW] Nuestros Patrocinadores -->
+    <section id="patrocinadores" class="sponsors-section">
+        <div class="title-strip">
+            <div class="container">
+                <h2>Nuestros Patrocinadores</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="sponsors-grid reveal">
+                <div class="sponsor-card">
+                    <div class="sponsor-logo" style="background: #EEE; height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-weight: 700; color: #999; border: 1px solid #DDD;">LOGO PARTNER 1</div>
+                    <h4>Premium Arts</h4>
+                    <p>Apoyando la cultura y el arte tropical desde siempre.</p>
+                </div>
+                <div class="sponsor-card">
+                    <div class="sponsor-logo" style="background: #EEE; height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-weight: 700; color: #999; border: 1px solid #DDD;">LOGO PARTNER 2</div>
+                    <h4>Salsa Sound Systems</h4>
+                    <p>Los mejores equipos para el mejor baile.</p>
+                </div>
+                <div class="sponsor-card">
+                    <div class="sponsor-logo" style="background: #EEE; height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-weight: 700; color: #999; border: 1px solid #DDD;">LOGO PARTNER 3</div>
+                    <h4>Tropical Events Co.</h4>
+                    <p>Producción de eventos de alto calibre internacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 3. Links para YT, TK, Instagram -->
     <section class="social-section">
         <div class="container">
-            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">Síguenos</h2>
-        </div>
-                <a href="https://youtube.com" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
-                <a href="https://tiktok.com" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
-                <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">SÍGUENOS EN REDES</h2>
+            <div class="social-links" style="margin-top: 40px; display: flex; justify-content: center; gap: 50px;">
+                <a href="https://www.instagram.com/adnsalsaoficial?igsh=MTNpOXltem5ydzh3Mw==" target="_blank" class="social-link"><i class="fab fa-instagram" style="font-size: 3rem;"></i></a>
+                <a href="https://www.tiktok.com/@adnsalsaoficial?_r=1&_t=ZS-959fMCPkSSz" target="_blank" class="social-link"><i class="fab fa-tiktok" style="font-size: 3rem;"></i></a>
             </div>
         </div>
     </section>

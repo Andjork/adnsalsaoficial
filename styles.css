@@ -139,11 +139,20 @@ nav {
 }
 
 .logo {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.8rem;
     font-family: var(--font-heading);
     color: var(--primary);
     font-weight: 900;
     letter-spacing: 2px;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
 }
 
 /* Hero Section */
@@ -188,25 +197,8 @@ nav {
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 50px;
     align-items: center;
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    border: 1px solid var(--primary);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -304,6 +296,61 @@ nav {
     border-color: var(--primary);
     outline: none;
     background: rgba(255, 255, 255, 0.05);
+}
+
+/* Media and New Sections */
+.emisora-section, .youtube-section, .sponsors-section {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.media-card {
+    background: var(--white);
+    padding: 60px 40px;
+    border: 1px solid #EEE;
+    text-align: center;
+    transition: var(--transition);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.media-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.media-card h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+/* Sponsors */
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.sponsor-card {
+    background: var(--white);
+    padding: 40px;
+    border: 1px solid #F0F0F0;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.sponsor-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.sponsor-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 10px;
 }
 
 /* Carousels */
