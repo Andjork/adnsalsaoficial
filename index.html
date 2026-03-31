@@ -13,10 +13,10 @@
         <div class="container">
             <nav>
                 <div class="logo">ADN SALSA</div>
-                <ul class="nav-links" style="display: flex; list-style: none; gap: 20px;">
-                    <li><a href="#about" style="color: var(--primary); text-decoration: none; font-weight: 700;">QUIÉNES SOMOS</a></li>
-                    <li><a href="#benefits" style="color: var(--primary); text-decoration: none; font-weight: 700;">BENEFICIOS</a></li>
-                    <li><a href="#events" style="color: var(--primary); text-decoration: none; font-weight: 700;">EVENTOS</a></li>
+                <ul class="nav-links" style="display: flex; list-style: none; gap: 30px;">
+                    <li><a href="#about" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">QUIÉNES SOMOS</a></li>
+                    <li><a href="#benefits" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">BENEFICIOS</a></li>
+                    <li><a href="#events" style="color: var(--white); text-decoration: none; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">EVENTOS</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,26 +32,34 @@
 
     <!-- 1. Quienes Somos -->
     <section id="about" class="about">
+        <div class="title-strip">
+            <div class="container">
+                <h2>¿Quiénes Somos?</h2>
+            </div>
+        </div>
         <div class="container">
             <div class="about-grid">
                 <div class="reveal">
-                    <h2>¿Quiénes Somos?</h2>
-                    <p style="font-size: 1.1rem; margin-top: 20px; color: #555;">
+                    <p style="font-size: 1.25rem; margin-top: 20px; font-weight: 300;">
                         Somos **ADN Salsa**, una academia dedicada a preservar y difundir la cultura de la salsa. No solo enseñamos pasos, transmitimos una herencia de alegría y ritmo que conecta a personas de todas las edades.
                     </p>
-                    <p style="margin-top: 20px; color: #555;">
-                        Con más de 10 años de experiencia, hemos formado a miles de bailarines que hoy brillan en las pistas de todo el mundo. Nuestro ADN es pura energía tropical.
+                    <p style="margin-top: 20px; color: #333;">
+                        Con más de 10 años de experiencia, hemos formado a miles de bailarines que hoy brillan en las pistas de todo el mundo. Nuestro ADN es pura energía tropical destilada en elegancia y técnica.
                     </p>
                 </div>
-                <div class="reveal" style="background: url('images/event2.png'); background-size: cover; height: 350px; border-radius: 20px; box-shadow: var(--shadow);"></div>
+                <div class="reveal" style="background: url('images/event2.png'); background-size: cover; height: 450px; border: 1px solid var(--primary);"></div>
             </div>
         </div>
     </section>
 
     <!-- 2. Formulario y Beneficios -->
     <section id="benefits" class="benefits-section">
+        <div class="title-strip">
+            <div class="container">
+                <h2>Beneficios de unirte</h2>
+            </div>
+        </div>
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Beneficios de unirte</h2>
             <div class="benefits-grid">
                 <div class="benefit-card reveal">
                     <i class="fas fa-bolt"></i>
@@ -92,9 +100,13 @@
     </section>
 
     <!-- 4. Carousel Eventos con Imagenes Fijas con Links a YT -->
-    <section id="events" class="events-section" style="background: var(--white);">
+    <section id="events" class="events-section">
+        <div class="title-strip">
+            <div class="container">
+                <h2>Próximos Eventos</h2>
+            </div>
+        </div>
         <div class="container">
-            <h2 style="margin-bottom: 40px;">Próximos Eventos</h2>
             <div class="carousel-container">
                 <div class="carousel-track" id="track1">
                     <div class="carousel-slide">
@@ -130,9 +142,13 @@
     </section>
 
     <!-- 5. Carousel Eventos Recomendados -->
-    <section class="events-section" style="background: #f9f9f9;">
+    <section class="events-section">
+        <div class="title-strip">
+            <div class="container">
+                <h2>Recomendados</h2>
+            </div>
+        </div>
         <div class="container">
-            <h2 style="margin-bottom: 40px;">Recomendados para ti</h2>
             <div class="carousel-container">
                 <div class="carousel-track" id="track2">
                     <div class="carousel-slide">
@@ -140,7 +156,7 @@
                             <div class="event-info">
                                 <h3>Clase Maestra: Estilo</h3>
                                 <p>Instructor Jefe</p>
-                                <span style="background: var(--secondary); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">Top Recomendado</span>
+                                <span style="background: var(--primary); color: var(--dark); padding: 5px 12px; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase;">Top Recomendado</span>
                             </div>
                         </div>
                     </div>
@@ -168,8 +184,8 @@
     <!-- 3. Links para YT, TK, Instagram -->
     <section class="social-section">
         <div class="container">
-            <h2>Síguenos en nuestras redes</h2>
-            <div class="social-links">
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">Síguenos</h2>
+        </div>
                 <a href="https://youtube.com" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
                 <a href="https://tiktok.com" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
                 <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
