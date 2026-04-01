@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // but the track logic above makes it feel more "app-like" on desktop.
     
     // Ensure CSS allows scrolling
-    const tracks = ['track1', 'track2'];
+    const tracks = ['track1', 'track2', 'track3'];
     tracks.forEach(id => {
         const t = document.getElementById(id);
         if(t) {
@@ -104,11 +104,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scroll for Navigation Links
+    // 5. Membership Modal Logic
+    const modalOverlay = document.getElementById('membership-modal');
+    const closeModalIcon = document.getElementById('close-modal');
+    const modalTriggers = document.querySelectorAll('.modal-trigger');
+
+    if (modalOverlay) {
+        const openModal = (e) => {
+            e.preventDefault();
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Lock scrolling
+        };
+
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Unlock scrolling
+        };
+
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', openModal);
+        });
+
+        if (closeModalIcon) {
+            closeModalIcon.addEventListener('click', closeModal);
+        }
+
+        // Close on overlay click
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
+
+    // Smooth Scroll for Navigation Links (Excluding modal triggers)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#' || this.classList.contains('modal-trigger')) return; // Let modal logic handle it
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 window.scrollTo({
                     top: target.offsetTop - 80,
