@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Header Scroll Effect
+    // 1. Header Scroll Effect & Mobile Menu Logic
     const header = document.getElementById('header');
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksA = document.querySelectorAll('.nav-links a');
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -8,6 +12,25 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+
+    // Mobile Menu Toggle
+    if (mobileNavToggle && navLinks) {
+        mobileNavToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            mobileNavToggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = isOpen ? 'hidden' : ''; // Lock scrolling
+        });
+
+        // Close menu on link click
+        navLinksA.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = '';
+            });
+        });
+    }
 
     // 2. Reveal Animations on Scroll
     const observerOptions = {
