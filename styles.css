@@ -320,10 +320,10 @@ h3 {
     opacity: 1;
 }
 
-/* Custom styles for Nuestros Eventos Side-by-Side */
+/* Custom styles for Nuestros Eventos Side-by-Side - Premium Redesign */
 #track-events .carousel-item {
-    flex: 0 0 800px;
-    max-width: 90vw;
+    flex: 0 0 950px;
+    max-width: 95vw;
 }
 
 #track-events .video-card {
@@ -331,54 +331,91 @@ h3 {
     flex-direction: row;
     width: 100%;
     height: auto;
-    background: #000;
+    background: transparent;
+    gap: 30px;
+    padding: 10px;
 }
 
-#track-events .video-card img {
-    width: 50%;
-    height: 450px;
+.event-item-frame {
+    flex: 1;
+    position: relative;
+    background: var(--white);
+    padding: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    overflow: visible; /* To allow corners to peak out if needed */
+}
+
+/* Individual Gold Corners for each frame */
+.event-item-frame::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid var(--primary);
+    border-left: 2px solid var(--primary);
+    z-index: 1;
+}
+
+.event-item-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 30px;
+    height: 30px;
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    z-index: 1;
+}
+
+#track-events .event-item-frame img,
+#track-events .event-item-frame video {
+    width: 100%;
+    height: 480px;
+    display: block;
     object-fit: cover;
-    position: relative;
     opacity: 1;
+    position: relative; /* Ensure it stays in flow */
+    pointer-events: auto; /* Ensure it responds to clicks/touches */
     transition: var(--transition);
 }
 
-#track-events .video-card video {
-    width: 50%;
-    height: 450px;
+#track-events .event-item-frame video {
     object-fit: contain;
-    position: relative;
-    opacity: 1;
-    transition: var(--transition);
-    background: #000;
+    background: #050505;
 }
 
-#track-events .video-card.video-active img {
-    opacity: 0.8;
-    filter: grayscale(30%);
+.video-card.video-active .event-item-frame {
+    border-color: var(--primary);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.1);
+    transform: translateY(-5px);
 }
 
-#track-events .video-card.video-active video {
-    opacity: 1;
-    transform: scale(1.02);
-    z-index: 2;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     #track-events .carousel-item {
-        flex: 0 0 85vw;
+        flex: 0 0 90vw;
     }
     
     #track-events .video-card {
         flex-direction: column;
+        gap: 20px;
+        padding: 5px;
     }
     
-    #track-events .video-card img,
-    #track-events .video-card video {
-        width: 100%;
-        height: 250px;
+    #track-events .event-item-frame {
+        padding: 10px;
+    }
+
+    #track-events .event-item-frame img,
+    #track-events .event-item-frame video {
+        height: min(280px, 35vh);
     }
 }
+/* Redundant block removed to fix syntax error */
 
 @media (max-width: 768px) {
     .carousel-item {
