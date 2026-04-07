@@ -48,63 +48,157 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // 3. Simple Carousel Logic
-    function setupCarousel(trackId) {
+    // 3. Enhanced Carousel & Video Hover Logic
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    function setupCarousel(trackId, dotsId) {
         const track = document.getElementById(trackId);
+        const dotsContainer = document.getElementById(dotsId);
         if (!track) return;
 
+        const items = track.querySelectorAll('.carousel-item');
+        if (items.length === 0) return;
+
         let isDown = false;
+        let isPaused = false;
+        let isProgrammaticScroll = false;
         let startX;
         let scrollLeft;
+        let scrollInterval;
+        let scrollTimeout;
 
-        track.addEventListener('mousedown', (e) => {
-            isDown = true;
-            startX = e.pageX - track.offsetLeft;
-            scrollLeft = track.scrollLeft;
+        // Generate dots
+        if (dotsContainer) {
+            items.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    const itemWidth = items[0].offsetWidth + 30;
+                    isProgrammaticScroll = true;
+                    track.scrollTo({
+                        left: index * itemWidth,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(() => { isProgrammaticScroll = false; }, 1000);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        const updateDots = () => {
+            if (!dotsContainer) return;
+            const itemWidth = items[0].offsetWidth + 30;
+            const scrollPos = track.scrollLeft;
+            const activeIndex = Math.round(scrollPos / itemWidth);
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === activeIndex % items.length);
+            });
+        };
+
+        // Sync dots on scroll
+        track.addEventListener('scroll', () => {
+            updateDots();
+
+            // Only pause if the scroll was initiated by the user (not by auto-scroll)
+            if (!isProgrammaticScroll) {
+                isPaused = true;
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isPaused = false;
+                }, 4000); // Resume after 4s of inactivity
+            }
         });
 
-        track.addEventListener('mouseleave', () => {
-            isDown = false;
-        });
+        // Slide-by-slide Auto Scroll
+        const startAutoScroll = () => {
+            scrollInterval = setInterval(() => {
+                if (!isDown && !isPaused) {
+                    const itemWidth = items[0].offsetWidth + 30;
+                    const maxScroll = track.scrollWidth - track.offsetWidth;
 
-        track.addEventListener('mouseup', () => {
-            isDown = false;
-        });
+                    isProgrammaticScroll = true;
 
-        track.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - track.offsetLeft;
-            const walk = (x - startX) * 2;
-            track.scrollLeft = scrollLeft - walk;
-        });
+                    if (track.scrollLeft >= maxScroll - 10) {
+                        track.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+                    }
 
-        // Touch support
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].pageX - track.offsetLeft;
-            scrollLeft = track.scrollLeft;
-        });
+                    // Reset flag after animation completes
+                    setTimeout(() => {
+                        isProgrammaticScroll = false;
+                    }, 1000);
+                }
+            }, 5000); // Change slide every 5 seconds
+        };
 
-        track.addEventListener('touchmove', (e) => {
-            const x = e.touches[0].pageX - track.offsetLeft;
-            const walk = (x - startX) * 2;
-            track.scrollLeft = scrollLeft - walk;
-        });
+        startAutoScroll();
+
+        // Desktop Hover Pause
+        track.parentElement.addEventListener('mouseenter', () => { isPaused = true; });
+        track.parentElement.addEventListener('mouseleave', () => { isPaused = false; });
+
+        // Desktop Dragging logic
+        if (!isTouchDevice) {
+            track.addEventListener('mousedown', (e) => {
+                isDown = true;
+                isPaused = true;
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+                track.style.scrollBehavior = 'auto';
+            });
+
+            track.addEventListener('mouseleave', () => { isDown = false; });
+            track.addEventListener('mouseup', () => {
+                isDown = false;
+                track.style.scrollBehavior = 'smooth';
+                // Delay resume
+                setTimeout(() => { isPaused = false; }, 2000);
+            });
+
+            track.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                const walk = (x - startX) * 2;
+                track.scrollLeft = scrollLeft - walk;
+            });
+        }
     }
 
-    // Auto-scroll Carousels (Optional - lets make it interactive)
-    // For now we'll allow horizontal scroll via CSS overflow if preferred, 
-    // but the track logic above makes it feel more "app-like" on desktop.
-    
-    // Ensure CSS allows scrolling
-    const tracks = ['track1', 'track2', 'track3'];
-    tracks.forEach(id => {
-        const t = document.getElementById(id);
-        if(t) {
-            t.style.overflowX = 'auto';
-            t.style.scrollbarWidth = 'none'; // Firefox
-            t.style.msOverflowStyle = 'none'; // IE
-            t.classList.add('hide-scrollbar');
-        }
+    // Initialize Enhanced Carousels
+    setupCarousel('track-events', 'dots-events');
+    setupCarousel('track-allied', 'dots-allied');
+    setupCarousel('track-emisora', 'dots-emisora');
+    setupCarousel('track-patrocinadores', 'dots-patrocinadores');
+
+    // Video Hover Logic for "Nuestros Eventos"
+    const videoCards = document.querySelectorAll('.video-card');
+    videoCards.forEach(card => {
+        const video = card.querySelector('video');
+
+        card.addEventListener('mouseenter', () => {
+            card.classList.add('video-active');
+            if (video) {
+                video.muted = false; // Enable sound on hover
+                video.play().catch(e => {
+                    // Browsers block unmuted play without previous interaction
+                    console.warn("Autoplay with sound blocked, playing muted", e);
+                    video.muted = true;
+                    video.play();
+                });
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('video-active');
+            if (video) {
+                video.pause();
+                video.muted = true; // Re-mute for next time
+            }
+        });
     });
 
     // 4. Form Submission
@@ -114,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerText;
-            
+
             btn.innerText = 'ENVIANDO...';
             btn.disabled = true;
 
@@ -172,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#' || this.classList.contains('modal-trigger')) return; // Let modal logic handle it
-            
+
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
