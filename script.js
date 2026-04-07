@@ -194,12 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Remove listeners
-        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
+        ['click', 'touchstart', 'keydown'].forEach(evt => 
             document.removeEventListener(evt, unlockAudio)
         );
     };
 
-    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
+    ['click', 'touchstart', 'keydown'].forEach(evt => 
         document.addEventListener(evt, unlockAudio, { passive: true })
     );
     
@@ -229,7 +229,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, videoObserverOptions);
 
-        videoCards.forEach(card => videoObserver.observe(card));
+        videoCards.forEach(card => {
+            videoObserver.observe(card);
+
+            const muteToggle = card.querySelector('.video-mute-toggle');
+            const video = card.querySelector('video');
+
+            if (muteToggle && video) {
+                muteToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hasInteracted = true;
+                    const isMuted = !video.muted;
+                    video.muted = isMuted;
+                    
+                    // Update icon
+                    muteToggle.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+                    
+                    if (!isMuted) {
+                        video.play().catch(console.error);
+                    }
+                });
+            }
+        });
     }
 
 

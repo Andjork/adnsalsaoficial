@@ -304,6 +304,44 @@ h3 {
     opacity: 1;
 }
 
+.video-mute-toggle {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.video-mute-toggle:hover {
+    background: var(--primary);
+    color: var(--dark);
+    transform: scale(1.1);
+}
+
+.video-mute-toggle i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 992px) {
+    .video-mute-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
 /* Custom styles for Nuestros Eventos Side-by-Side - Premium Redesign */
 #track-events .carousel-item {
     flex: 0 0 950px;
