@@ -232,25 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
         videoCards.forEach(card => videoObserver.observe(card));
     }
 
-    // 4. Form Submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
-
-            btn.innerText = 'ENVIANDO...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                alert('¡Gracias por unirte a ADN Salsa! Pronto nos pondremos en contacto contigo.');
-                contactForm.reset();
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
-    }
 
     // 5. Membership Modal Logic
     const modalOverlay = document.getElementById('membership-modal');
@@ -308,4 +289,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 6. Scroll to Top Logic
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true }); // Optimized scroll listener
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });

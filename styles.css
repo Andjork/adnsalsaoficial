@@ -11,22 +11,18 @@
     --dark: #000000;
     --soft-dark: #111111;
     --white: #FFFFFF;
-    --glass: rgba(0, 0, 0, 0.7);
     --shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Outfit', sans-serif;
-    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F9E076 50%, #AA8A2E 100%);
 
     /* Fluid Typography */
     --fs-h1: clamp(2.5rem, 8vw + 1rem, 7rem);
     --fs-h2: clamp(1.8rem, 4vw + 0.5rem, 3.5rem);
     --fs-h3: clamp(1.6rem, 3vw + 0.5rem, 2.8rem);
     --fs-body: clamp(0.95rem, 1.2vw + 0.2rem, 1.25rem);
-    --fs-small: clamp(0.8rem, 1vw, 1rem);
 
     /* Layout */
-    --header-height: 90px;
     --section-padding: clamp(80px, 12vw, 160px);
     /* Increased section separation */
 }
@@ -56,18 +52,6 @@ h3 {
     letter-spacing: 1px;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 .reveal {
     opacity: 0;
@@ -964,3 +948,51 @@ footer {
         font-size: 1rem;
     }
 }
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--dark);
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background-color: var(--primary);
+    color: var(--dark);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+}
+
+/* Accessibility: Focus States */
+a:focus, 
+button:focus,
+.modal-trigger:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
+/* Base Styles for section headers to ensure contrast */
+.title-strip h2 {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}

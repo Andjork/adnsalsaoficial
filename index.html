@@ -5,8 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="ADN SALSA CLUB: Comunidad privada en Madrid que conecta personas a través de la cultura salsera. Eventos, networking, emisora y experiencias exclusivas.">
     <title>ADN Salsa Oficial | Siente el Ritmo</title>
+    
+    <!-- Social Media Tags (Open Graph) -->
+    <meta property="og:title" content="ADN Salsa Oficial | Siente el Ritmo">
+    <meta property="og:description" content="Únete a la comunidad de salsa más grande de Madrid. Eventos, cultura, identidad y networking.">
+    <meta property="og:image" content="images/ADNsalsa_logo.PNG">
+    <meta property="og:url" content="https://adnsalsaoficial.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ADN Salsa Oficial">
+    <meta name="twitter:description" content="Conecta con la cultura salsera en Madrid.">
+    <meta name="twitter:image" content="images/ADNsalsa_logo.PNG">
+
+    <link rel="canonical" href="https://adnsalsaoficial.com">
     <link rel="icon" type="image/png" href="images/ADNsalsa_logo.PNG">
+    
+    <!-- Performance: Preconnect to CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -69,7 +91,7 @@
 
             <div class="about-image-container reading-width reveal">
                 <img src="images/quienes_somos/quienes_somos_main.jpeg"
-                    alt="ADN Salsa Quienes Somos" class="about-img">
+                    alt="ADN Salsa Quienes Somos - Comunidad en Madrid" class="about-img" loading="lazy">
             </div>
         </div>
     </section>
@@ -194,10 +216,10 @@
                     <div class="carousel-item">
                         <div class="video-card" id="video-card-1">
                             <div class="event-item-frame">
-                                <img src="images/nuestros_eventos/nues_even_img1.jpeg" alt="Nuestros Eventos">
+                                <img src="images/nuestros_eventos/nues_even_img1.jpeg" alt="Nuestros Eventos de Salsa en vivo" loading="lazy">
                             </div>
                             <div class="event-item-frame">
-                                <video src="images/nuestros_eventos/nues_even_vid1.mp4" loop playsinline webkit-playsinline muted autoplay></video>
+                                <video src="images/nuestros_eventos/nues_even_vid1.mp4" loop playsinline webkit-playsinline muted autoplay loading="lazy"></video>
                             </div>
                         </div>
                     </div>
@@ -231,7 +253,7 @@
             <div class="carousel-container reveal">
                 <div class="carousel-track" id="track-allied">
                     <div class="carousel-item">
-                        <img src="images/evento_aliado/eve_ali_img1.jpeg" alt="Evento Aliado">
+                        <img src="images/evento_aliado/eve_ali_img1.jpeg" alt="Evento Aliado de Salsa" loading="lazy">
                     </div>
                 </div>
                 <div class="carousel-dots" id="dots-allied"></div>
@@ -290,7 +312,7 @@
                 <div class="carousel-container">
                     <div class="carousel-track" id="track-emisora">
                         <div class="carousel-item">
-                            <img src="images/emisora/emisora_img1.jpeg" alt="ADN Salsa Radio">
+                            <img src="images/emisora/emisora_img1.jpeg" alt="ADN Salsa Radio Online" loading="lazy">
                         </div>
                     </div>
                     <div class="carousel-dots" id="dots-emisora"></div>
@@ -362,19 +384,19 @@
             <div class="carousel-container reveal">
                 <div class="carousel-track" id="track-patrocinadores">
                     <div class="carousel-item">
-                        <img src="images/patrocinadores/esta_los_paisas.jpeg" alt="Sponsor 1">
+                        <img src="images/patrocinadores/esta_los_paisas.jpeg" alt="Patrocinador Esta los Paisas" loading="lazy">
                     </div>
                     <div class="carousel-item">
-                        <img src="images/patrocinadores/golden_viking.jpeg" alt="Sponsor 2">
+                        <img src="images/patrocinadores/golden_viking.jpeg" alt="Patrocinador Golden Viking" loading="lazy">
                     </div>
                     <div class="carousel-item">
-                        <img src="images/patrocinadores/haste_socio.jpeg" alt="Sponsor 3">
+                        <img src="images/patrocinadores/haste_socio.jpeg" alt="Hazte Socio ADN Salsa" loading="lazy">
                     </div>
                     <div class="carousel-item">
-                        <img src="images/patrocinadores/mundo_fox.jpeg" alt="Sponsor 4">
+                        <img src="images/patrocinadores/mundo_fox.jpeg" alt="Patrocinador Mundo Fox" loading="lazy">
                     </div>
                     <div class="carousel-item">
-                        <img src="images/patrocinadores/rincon_latino.jpeg" alt="Sponsor 5">
+                        <img src="images/patrocinadores/rincon_latino.jpeg" alt="Patrocinador Rincon Latino" loading="lazy">
                     </div>
                 </div>
                 <div class="carousel-dots" id="dots-patrocinadores"></div>
@@ -500,7 +522,11 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js" defer></script>
 </body>
 
 </html>
