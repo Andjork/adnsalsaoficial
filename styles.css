@@ -396,23 +396,36 @@ h3 {
 }
 
 @media (max-width: 992px) {
+    .events-section {
+        padding: 100px 0 140px; /* Increased vertical space for mobile */
+    }
+
     #track-events .carousel-item {
-        flex: 0 0 90vw;
+        flex: 0 0 92vw;
     }
     
     #track-events .video-card {
         flex-direction: column;
-        gap: 20px;
-        padding: 5px;
+        gap: 25px;
+        padding: 8px;
+        overflow: visible;
+        min-height: 600px; /* Force minimum height for stacked content */
     }
     
     #track-events .event-item-frame {
-        padding: 10px;
+        padding: 12px;
+        flex: none; /* Don't grow/shrink unexpectedly on mobile Safari */
+        width: 100%;
     }
 
     #track-events .event-item-frame img,
     #track-events .event-item-frame video {
-        height: min(280px, 35vh);
+        height: 280px;
+        width: 100%;
+        max-width: 100%;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
     }
 }
 /* Redundant block removed to fix syntax error */

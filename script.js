@@ -176,6 +176,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Video Autoplay on Scroll (Nuestros Eventos)
     const videoCards = document.querySelectorAll('.video-card');
+    let hasInteracted = false;
+
+    // Universal Audio Unlock Trigger
+    const unlockAudio = () => {
+        if (hasInteracted) return;
+        hasInteracted = true;
+        
+        // Try to unmute all videos that are currently visible
+        document.querySelectorAll('video').forEach(video => {
+            if (video.closest('.video-active')) {
+                video.muted = false;
+                video.play().catch(() => {
+                    // Fail silently if still blocked
+                });
+            }
+        });
+        
+        // Remove listeners
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
+            document.removeEventListener(evt, unlockAudio)
+        );
+    };
+
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
+        document.addEventListener(evt, unlockAudio, { passive: true })
+    );
     
     if (videoCards.length > 0) {
         const videoObserverOptions = {
@@ -189,8 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (entry.isIntersecting) {
                     entry.target.classList.add('video-active');
-                    // Attempt to play unmuted first
-                    video.muted = false;
+                    // Attempt to play unmuted only if user has interacted
+                    video.muted = !hasInteracted;
                     video.play().catch(error => {
                         console.warn("Autoplay with sound blocked, playing muted instead:", error);
                         video.muted = true;
