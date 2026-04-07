@@ -320,8 +320,64 @@ h3 {
     opacity: 1;
 }
 
-.video-card.video-active img {
-    opacity: 0;
+/* Custom styles for Nuestros Eventos Side-by-Side */
+#track-events .carousel-item {
+    flex: 0 0 800px;
+    max-width: 90vw;
+}
+
+#track-events .video-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    background: #000;
+}
+
+#track-events .video-card img {
+    width: 50%;
+    height: 450px;
+    object-fit: cover;
+    position: relative;
+    opacity: 1;
+    transition: var(--transition);
+}
+
+#track-events .video-card video {
+    width: 50%;
+    height: 450px;
+    object-fit: contain;
+    position: relative;
+    opacity: 1;
+    transition: var(--transition);
+    background: #000;
+}
+
+#track-events .video-card.video-active img {
+    opacity: 0.8;
+    filter: grayscale(30%);
+}
+
+#track-events .video-card.video-active video {
+    opacity: 1;
+    transform: scale(1.02);
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    #track-events .carousel-item {
+        flex: 0 0 85vw;
+    }
+    
+    #track-events .video-card {
+        flex-direction: column;
+    }
+    
+    #track-events .video-card img,
+    #track-events .video-card video {
+        width: 100%;
+        height: 250px;
+    }
 }
 
 @media (max-width: 768px) {

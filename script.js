@@ -174,32 +174,37 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCarousel('track-emisora', 'dots-emisora');
     setupCarousel('track-patrocinadores', 'dots-patrocinadores');
 
-    // Video Hover Logic for "Nuestros Eventos"
+    // 4. Video Autoplay on Scroll (Nuestros Eventos)
     const videoCards = document.querySelectorAll('.video-card');
-    videoCards.forEach(card => {
-        const video = card.querySelector('video');
+    
+    if (videoCards.length > 0) {
+        const videoObserverOptions = {
+            threshold: 0.5 // Play when 50% visible
+        };
 
-        card.addEventListener('mouseenter', () => {
-            card.classList.add('video-active');
-            if (video) {
-                video.muted = false; // Enable sound on hover
-                video.play().catch(e => {
-                    // Browsers block unmuted play without previous interaction
-                    console.warn("Autoplay with sound blocked, playing muted", e);
-                    video.muted = true;
-                    video.play();
-                });
-            }
-        });
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target.querySelector('video');
+                if (!video) return;
 
-        card.addEventListener('mouseleave', () => {
-            card.classList.remove('video-active');
-            if (video) {
-                video.pause();
-                video.muted = true; // Re-mute for next time
-            }
-        });
-    });
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('video-active');
+                    // Attempt to play unmuted first
+                    video.muted = false;
+                    video.play().catch(error => {
+                        console.warn("Autoplay with sound blocked, playing muted instead:", error);
+                        video.muted = true;
+                        video.play();
+                    });
+                } else {
+                    entry.target.classList.remove('video-active');
+                    video.pause();
+                }
+            });
+        }, videoObserverOptions);
+
+        videoCards.forEach(card => videoObserver.observe(card));
+    }
 
     // 4. Form Submission
     const contactForm = document.getElementById('contact-form');
