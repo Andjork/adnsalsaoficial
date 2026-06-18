@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const unlockAudio = () => {
         if (hasInteracted) return;
         hasInteracted = true;
-        
+
         // Try to unmute all videos that are currently visible
         document.querySelectorAll('video').forEach(video => {
             if (video.closest('.video-active')) {
@@ -192,17 +192,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-        
+
         // Remove listeners
-        ['click', 'touchstart', 'keydown'].forEach(evt => 
+        ['click', 'touchstart', 'keydown'].forEach(evt =>
             document.removeEventListener(evt, unlockAudio)
         );
     };
 
-    ['click', 'touchstart', 'keydown'].forEach(evt => 
+    ['click', 'touchstart', 'keydown'].forEach(evt =>
         document.addEventListener(evt, unlockAudio, { passive: true })
     );
-    
+
     if (videoCards.length > 0) {
         const videoObserverOptions = {
             threshold: 0.5 // Play when 50% visible
@@ -241,10 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     hasInteracted = true;
                     const isMuted = !video.muted;
                     video.muted = isMuted;
-                    
+
                     // Update icon
                     muteToggle.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-                    
+
                     if (!isMuted) {
                         video.play().catch(console.error);
                     }
@@ -290,6 +290,44 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
                 closeModal();
+            }
+        });
+    }
+
+    // Contact Modal Logic
+    const contactModal = document.getElementById('contact-modal');
+    const closeContactModalIcon = document.getElementById('close-contact-modal');
+    const contactTriggers = document.querySelectorAll('.contact-modal-trigger');
+
+    if (contactModal) {
+        const openContactModal = (e) => {
+            e.preventDefault();
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeContactModal = () => {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        contactTriggers.forEach(trigger => {
+            trigger.addEventListener('click', openContactModal);
+        });
+
+        if (closeContactModalIcon) {
+            closeContactModalIcon.addEventListener('click', closeContactModal);
+        }
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeContactModal();
             }
         });
     }
